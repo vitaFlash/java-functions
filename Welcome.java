@@ -1,6 +1,18 @@
 //Inicializa la clase Welcome
 //Crea el método main
+public class Welcome {
+    public static void greeting() {
+        System.out.println("¡Hola FemCoder!");
+    }
+    public static void greetingCoder(String name) {
+        System.out.println("¡Hola " + name + "!");
+    }
 
+    public static void main(String[] args) {
+        Welcome.greeting();
+        Welcome.greetingCoder("Rocío");
+    }
+}
 //Tarea 1
 //Define el método greeting que imprima en terminal ¡Hola FemCoder!
 //Ejecuta el método greeting 
