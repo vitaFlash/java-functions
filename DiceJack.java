@@ -45,7 +45,9 @@ public class DiceJack {
      */
     
     // Escribe tu código aquí
-
+    public static boolean isLessThanOne(int num1, int num2, int num3) {
+        return (num1 < 1 || num2 < 1 || num3 < 1);
+    }
 
     /**
      * 
@@ -61,6 +63,9 @@ public class DiceJack {
      */
 
     // Escribe tu código aquí
+    public static boolean isHigherThanSix(int num1, int num2, int num3) {
+        return (num1 > 6 || num2 > 6 || num3 > 6);
+    }
 
 
     /**
@@ -76,6 +81,9 @@ public class DiceJack {
      */
 
     // Escribe tu código aquí
+    public static boolean userWon(int sumNumbers, int sumDiceRolls) {
+        return (sumNumbers > sumDiceRolls && (sumNumbers - sumDiceRolls) < 5);
+    }
 
 
     /**
@@ -88,6 +96,9 @@ public class DiceJack {
      */
 
     // Escribe tu código aquí
+    public static int rollDice() {
+        return (int) (Math.random() * 6) + 1;
+    }
 
 
 }
