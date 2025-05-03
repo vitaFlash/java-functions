@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class DiceJack {
     public static void main(String[] args) {
 
@@ -5,7 +7,7 @@ public class DiceJack {
         Reglas del juego:
         - El usuario debe escoger 3 números entre 1 y 6 (incluidos).
         - El usuario debe lanzar los dados una vez, el resultado serán 3 números aleatorios.
-
+        Scanner scanner = new Scanner(System.in);
         ¿Cuándo gana el usuario?:
         - Cuando la suma de los números escogidos es mayor a la suma de los dados lanzados
         - Y cuando la diferencia entre los dos números anteriores es menor de 5
@@ -28,6 +30,45 @@ public class DiceJack {
         - Imprimir la suma de los números escogidos por el usuario y la suma de los números que salieron en los dados.
         - Imprimir si el usuario ganó o perdió.
         */
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("¿Cuáles son los 3 números que quieres escoger? (entre 1 y 6): ");
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+        int num3 = scanner.nextInt();
+        scanner.nextLine();
+        // Check if the numbers are valid
+        if (isLessThanOne(num1, num2, num3) || isHigherThanSix(num1, num2, num3)) {
+            System.out.println("Los números deben estar entre 1 y 6.");
+            System.exit(0);
+        }
+        System.out.print("¿Quieres lanzar los dados? (si/no): ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("no")) {
+            System.out.println("Gracias por jugar.");
+            System.exit(0);
+        } else if (!answer.equalsIgnoreCase("si")) {
+            System.out.println("Respuesta no válida. Saliendo del programa.");
+            System.exit(0);
+        }
+        // Roll the dice
+        int dice1 = rollDice();
+        System.out.println("Dado 1: " + dice1);
+        int dice2 = rollDice();
+        System.out.println("Dado 2: " + dice2);
+        int dice3 = rollDice();
+        System.out.println("Dado 3: " + dice3);
+        int sumNumbers = num1 + num2 + num3;
+        int sumDiceRolls = dice1 + dice2 + dice3;
+        System.out.println("La suma de los números escogidos es: " + sumNumbers);
+        System.out.println("La suma de los números lanzados es: " + sumDiceRolls);
+        // Check if the user won
+        if (userWon(sumNumbers, sumDiceRolls)) {
+            System.out.println("¡Felicidades! Has ganado.");
+        } else {
+            System.out.println("Lo siento, has perdido.");
+        }
+        // Close the scanner
+        scanner.close();
     }
 
 
